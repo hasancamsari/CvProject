@@ -1,0 +1,47 @@
+﻿@model CvProject.Models.AllData
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Default/_MainLayout.cshtml";
+}
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@Html.Partial("Header") @* head *@
+
+<body>
+    <div id="tm-bg"></div>
+    <div id="tm-wrap">
+        <div class="tm-main-content">
+            <div class="container tm-site-header-container">
+                <div class="row">
+                    @Html.Partial("Home", Model.HomeData) @* home *@
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="content">
+                            <div class="grid">
+                                @Html.Partial("About", Model.AboutData) @* about *@
+
+                                @Html.Partial("Skills", Model.SkillsData) @* skills *@
+
+                                @Html.Partial("Works", Model.WorksData) @* works *@
+
+                                @Html.Partial("Contact", Model.ContactData) @* contact *@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("Footer") @* footer *@
+        </div> <!-- .tm-main-content -->
+    </div>
+    <!-- load JS -->
+    @Html.Partial("Scripts") @* scripts *@
+
+</body>
+</html>
+

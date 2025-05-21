@@ -1,0 +1,46 @@
+﻿@using CvProject.Models.Entity
+@model List<TBLPROJECTS>
+
+<div class="grid__item">
+    @foreach (var prj in Model)
+    {
+
+        <div class="product">
+            <div class="tm-nav-link">
+                <i class="fas fa-handshake fa-3x tm-nav-icon"></i>
+                <span class="tm-nav-text">@prj.TBLITEM.ITEM</span>
+                <div class="product__bg"></div>
+            </div>
+            <div class="product__description">
+                <div class="p-sm-4 p-2">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <h2 class="tm-page-title">@prj.TBLITEM.ITEM</h2>
+                            <hr style="width:100%; height:1px; background-color:#ccc; border:none;" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <p><strong>Jobs:</strong></p>
+                            <ul>
+                                @foreach (var job in Model)
+                                {
+                                    <li>@job.JOBS</li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-12">
+                            <p><strong>Works:</strong></p>
+                            <ul>
+                                @foreach (var work in Model)
+                                {
+                                    <li>@work.WORKS</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CvProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBLABOUT">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION_AB" Type="nvarchar" MaxLength="450" />
+          <Property Name="AITEMID" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLCONTACT">
+          <Key>
+            <PropertyRef Name="SMID" />
+          </Key>
+          <Property Name="SMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="20" />
+          <Property Name="SMLGIT" Type="nvarchar" MaxLength="550" />
+          <Property Name="LINKGIT" Type="nvarchar" MaxLength="550" />
+          <Property Name="SMLLINKED" Type="nvarchar" MaxLength="550" />
+          <Property Name="LINKIN" Type="nvarchar" MaxLength="550" />
+          <Property Name="LMAIL" Type="nvarchar" MaxLength="550" />
+          <Property Name="CITEMID" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ITEM" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLMAIN">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TBLPROJECTS">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JOBS" Type="nvarchar" MaxLength="550" />
+          <Property Name="WORKS" Type="nvarchar" MaxLength="550" />
+          <Property Name="PITEMID" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLSKILLS">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SKILLS" Type="nvarchar" MaxLength="550" />
+          <Property Name="SITEMID" Type="int" />
+        </EntityType>
+        <Association Name="FK_TBLABOUT_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLABOUT" Type="Self.TBLABOUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLABOUT">
+              <PropertyRef Name="AITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLCONTACT_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLCONTACT" Type="Self.TBLCONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLCONTACT">
+              <PropertyRef Name="CITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLPROJECTS_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLPROJECTS" Type="Self.TBLPROJECTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLPROJECTS">
+              <PropertyRef Name="PITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLSKILLS_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLSKILLS" Type="Self.TBLSKILLS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLSKILLS">
+              <PropertyRef Name="SITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CvProjectModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLABOUT" EntityType="Self.TBLABOUT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLCONTACT" EntityType="Self.TBLCONTACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLITEM" EntityType="Self.TBLITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLMAIN" EntityType="Self.TBLMAIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLPROJECTS" EntityType="Self.TBLPROJECTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSKILLS" EntityType="Self.TBLSKILLS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLABOUT_TBLITEM" Association="Self.FK_TBLABOUT_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLABOUT" EntitySet="TBLABOUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLCONTACT_TBLITEM" Association="Self.FK_TBLCONTACT_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLCONTACT" EntitySet="TBLCONTACT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLPROJECTS_TBLITEM" Association="Self.FK_TBLPROJECTS_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLPROJECTS" EntitySet="TBLPROJECTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLSKILLS_TBLITEM" Association="Self.FK_TBLSKILLS_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLSKILLS" EntitySet="TBLSKILLS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CvProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBLABOUT">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION_AB" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="AITEMID" Type="Int32" />
+          <NavigationProperty Name="TBLITEM" Relationship="Self.FK_TBLABOUT_TBLITEM" FromRole="TBLABOUT" ToRole="TBLITEM" />
+        </EntityType>
+        <EntityType Name="TBLCONTACT">
+          <Key>
+            <PropertyRef Name="SMID" />
+          </Key>
+          <Property Name="SMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SMLGIT" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="LINKGIT" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="SMLLINKED" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="LINKIN" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="LMAIL" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="CITEMID" Type="Int32" />
+          <NavigationProperty Name="TBLITEM" Relationship="Self.FK_TBLCONTACT_TBLITEM" FromRole="TBLCONTACT" ToRole="TBLITEM" />
+        </EntityType>
+        <EntityType Name="TBLITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ITEM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLABOUT" Relationship="Self.FK_TBLABOUT_TBLITEM" FromRole="TBLITEM" ToRole="TBLABOUT" />
+          <NavigationProperty Name="TBLCONTACT" Relationship="Self.FK_TBLCONTACT_TBLITEM" FromRole="TBLITEM" ToRole="TBLCONTACT" />
+          <NavigationProperty Name="TBLPROJECTS" Relationship="Self.FK_TBLPROJECTS_TBLITEM" FromRole="TBLITEM" ToRole="TBLPROJECTS" />
+          <NavigationProperty Name="TBLSKILLS" Relationship="Self.FK_TBLSKILLS_TBLITEM" FromRole="TBLITEM" ToRole="TBLSKILLS" />
+        </EntityType>
+        <EntityType Name="TBLMAIN">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLPROJECTS">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JOBS" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="WORKS" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="PITEMID" Type="Int32" />
+          <NavigationProperty Name="TBLITEM" Relationship="Self.FK_TBLPROJECTS_TBLITEM" FromRole="TBLPROJECTS" ToRole="TBLITEM" />
+        </EntityType>
+        <EntityType Name="TBLSKILLS">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SKILLS" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="SITEMID" Type="Int32" />
+          <NavigationProperty Name="TBLITEM" Relationship="Self.FK_TBLSKILLS_TBLITEM" FromRole="TBLSKILLS" ToRole="TBLITEM" />
+        </EntityType>
+        <Association Name="FK_TBLABOUT_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLABOUT" Type="Self.TBLABOUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLABOUT">
+              <PropertyRef Name="AITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLCONTACT_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLCONTACT" Type="Self.TBLCONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLCONTACT">
+              <PropertyRef Name="CITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLPROJECTS_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLPROJECTS" Type="Self.TBLPROJECTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLPROJECTS">
+              <PropertyRef Name="PITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLSKILLS_TBLITEM">
+          <End Role="TBLITEM" Type="Self.TBLITEM" Multiplicity="0..1" />
+          <End Role="TBLSKILLS" Type="Self.TBLSKILLS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLITEM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLSKILLS">
+              <PropertyRef Name="SITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CvProjectEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBLABOUT" EntityType="Self.TBLABOUT" />
+          <EntitySet Name="TBLCONTACT" EntityType="Self.TBLCONTACT" />
+          <EntitySet Name="TBLITEM" EntityType="Self.TBLITEM" />
+          <EntitySet Name="TBLMAIN" EntityType="Self.TBLMAIN" />
+          <EntitySet Name="TBLPROJECTS" EntityType="Self.TBLPROJECTS" />
+          <EntitySet Name="TBLSKILLS" EntityType="Self.TBLSKILLS" />
+          <AssociationSet Name="FK_TBLABOUT_TBLITEM" Association="Self.FK_TBLABOUT_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLABOUT" EntitySet="TBLABOUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLCONTACT_TBLITEM" Association="Self.FK_TBLCONTACT_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLCONTACT" EntitySet="TBLCONTACT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLPROJECTS_TBLITEM" Association="Self.FK_TBLPROJECTS_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLPROJECTS" EntitySet="TBLPROJECTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLSKILLS_TBLITEM" Association="Self.FK_TBLSKILLS_TBLITEM">
+            <End Role="TBLITEM" EntitySet="TBLITEM" />
+            <End Role="TBLSKILLS" EntitySet="TBLSKILLS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CvProjectModelStoreContainer" CdmEntityContainer="CvProjectEntities3">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CvProjectModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLABOUT">
+            <EntityTypeMapping TypeName="CvProjectModel.TBLABOUT">
+              <MappingFragment StoreEntitySet="TBLABOUT">
+                <ScalarProperty Name="AID" ColumnName="AID" />
+                <ScalarProperty Name="DESCRIPTION_AB" ColumnName="DESCRIPTION_AB" />
+                <ScalarProperty Name="AITEMID" ColumnName="AITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLCONTACT">
+            <EntityTypeMapping TypeName="CvProjectModel.TBLCONTACT">
+              <MappingFragment StoreEntitySet="TBLCONTACT">
+                <ScalarProperty Name="SMID" ColumnName="SMID" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="SMLGIT" ColumnName="SMLGIT" />
+                <ScalarProperty Name="LINKGIT" ColumnName="LINKGIT" />
+                <ScalarProperty Name="SMLLINKED" ColumnName="SMLLINKED" />
+                <ScalarProperty Name="LINKIN" ColumnName="LINKIN" />
+                <ScalarProperty Name="LMAIL" ColumnName="LMAIL" />
+                <ScalarProperty Name="CITEMID" ColumnName="CITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLITEM">
+            <EntityTypeMapping TypeName="CvProjectModel.TBLITEM">
+              <MappingFragment StoreEntitySet="TBLITEM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLMAIN">
+            <EntityTypeMapping TypeName="CvProjectModel.TBLMAIN">
+              <MappingFragment StoreEntitySet="TBLMAIN">
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLPROJECTS">
+            <EntityTypeMapping TypeName="CvProjectModel.TBLPROJECTS">
+              <MappingFragment StoreEntitySet="TBLPROJECTS">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="JOBS" ColumnName="JOBS" />
+                <ScalarProperty Name="WORKS" ColumnName="WORKS" />
+                <ScalarProperty Name="PITEMID" ColumnName="PITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSKILLS">
+            <EntityTypeMapping TypeName="CvProjectModel.TBLSKILLS">
+              <MappingFragment StoreEntitySet="TBLSKILLS">
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="SKILLS" ColumnName="SKILLS" />
+                <ScalarProperty Name="SITEMID" ColumnName="SITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
