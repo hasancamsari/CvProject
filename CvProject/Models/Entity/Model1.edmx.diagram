@@ -16,6 +16,7 @@
         <AssociationConnector Association="CvProjectModel.FK_TBLCONTACT_TBLITEM" ManuallyRouted="false" />
         <AssociationConnector Association="CvProjectModel.FK_TBLPROJECTS_TBLITEM" ManuallyRouted="false" />
         <AssociationConnector Association="CvProjectModel.FK_TBLSKILLS_TBLITEM" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CvProjectModel.TBLUSERS" Width="1.5" PointX="5.875" PointY="6.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

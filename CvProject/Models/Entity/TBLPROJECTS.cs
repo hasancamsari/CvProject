@@ -18,6 +18,7 @@ namespace CvProject.Models.Entity
         public string JOBS { get; set; }
         public string WORKS { get; set; }
         public Nullable<int> PITEMID { get; set; }
+        public Nullable<int> P_ACTIVE { get; set; }
     
         public virtual TBLITEM TBLITEM { get; set; }
     }

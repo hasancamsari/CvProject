@@ -14,38 +14,32 @@ namespace CvProject.Controllers
         CvProjectEntities3 db = new CvProjectEntities3();
         public ActionResult Index()
         {
-            var model = new AllData
-            {
-                HomeData = db.TBLMAIN.ToList(),
-                AboutData = db.TBLABOUT.ToList(),
-                SkillsData = db.TBLSKILLS.ToList(),
-                WorksData = db.TBLPROJECTS.ToList(),
-                ContactData = db.TBLCONTACT.ToList()
-            };
-            return View(model);
+            var degerler = db.TBLMAIN.ToList();
+            return PartialView(degerler);
         }
 
         public ActionResult HeaderP()
         {
-            return View();
+            return PartialView();
         }
         public ActionResult SidebarP()
         {
-            return View();
+            return PartialView();
         }
         public ActionResult NavbarP()
         {
-            return View();
+            var deger = db.TBLMAIN.FirstOrDefault();
+            return PartialView(deger);
         }
 
         public ActionResult FooterP()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult ScriptsP()
         {
-            return View();
+            return PartialView();
         }
     }
 }

@@ -1,0 +1,25 @@
+﻿@model CvProject.Models.Entity.TBLABOUT
+@{
+    ViewBag.Title = "Take";
+    Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
+}
+
+@using (Html.BeginForm("UpdateAbout", "AdminAbout", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.AID)
+
+    <div class="container mt-4">
+        <div class="card shadow rounded">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Bilgileri Giriniz</h5>
+
+                <div class="mb-3">
+                    <label class="form-label">Açıklama Giriniz</label>
+                    @Html.TextBoxFor(m => m.DESCRIPTION_AB, new { @class = "form-control" })
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        </div>
+    </div>
+}

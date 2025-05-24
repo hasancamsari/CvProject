@@ -1,0 +1,47 @@
+﻿@model List<CvProject.Models.Entity.TBLMAIN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
+}
+<h2>Anasayfa</h2>
+
+<table class="table table-bordered">
+    <thead class="table-active">
+        <tr>
+            <th>İSİM</th>
+            <th>AÇIKLAMA</th>
+            <th>GÜNCELLE</th>
+            <th>SİL</th>
+            <th>DURUM</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NAME</td>
+                <td>@item.DESCRIPTION</td>
+                <td>
+                    <a href="@Url.Action("Take", "AdminMain", new { id = item.MID })" class="btn btn-warning">GÜNCELLE</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("DeleteMain", "AdminMain", new { id = item.MID })" class="btn btn-danger">SİL</a>
+                </td>
+                <td class="text-center">
+                    @using (Html.BeginForm("Active", "AdminMain", FormMethod.Post, new { @id = "form_" + item.MID }))
+                    {
+                        @Html.Hidden("id", item.MID)
+                        <input type="checkbox"
+                               name="activeCheckbox"
+                               onchange="document.getElementById('form_@item.MID').submit();"
+                               @(item.M_ACTIVE == 1 ? "checked" : "")
+                               style="width: 30px; height: 30px; cursor: pointer;" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="/AdminMain/AddMain">Yeni Kullanıcı Ekle</a>

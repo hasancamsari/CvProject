@@ -1,1 +1,41 @@
-﻿
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@Html.Action("Header", "TheMainPage") <!-- head kısmı -->
+
+<body>
+    @RenderBody()
+
+    <div id="tm-bg"></div>
+    <div id="tm-wrap">
+        <div class="tm-main-content">
+            <div class="container tm-site-header-container">
+                <div class="row">
+
+                    @Html.Action("Home", "TheMainPage")
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="content">
+                            <div class="grid">
+
+                                @Html.Action("About", "TheMainPage")
+                                @Html.Action("Skills", "TheMainPage")
+                                @Html.Action("Works", "TheMainPage")
+                                @Html.Action("Contact", "TheMainPage")
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.Action("Footer", "TheMainPage")
+        </div>
+    </div>
+
+    @Html.Action("Scripts", "TheMainPage")
+
+</body>
+</html>

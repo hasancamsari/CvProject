@@ -1,15 +1,15 @@
 ﻿@using CvProject.Models.Entity;
-@model List<TBLMAIN>
+@model List<TBLPROJECTS>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
 }
-
+<h2>Deneyim ve İşler</h2>
 <table class="table table-bordered">
     <thead class="table-active">
         <tr>
-            <th>İSİM</th>
-            <th>AÇIKLAMA</th>
+            <th>DENEYİMLER</th>
+            <th>ÇALIŞMALAR</th>
             <th>GÜNCELLE</th>
             <th>SİL</th>
             <th>DURUM</th>
@@ -20,13 +20,13 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.NAME</td>
-                <td>@item.DESCRIPTION</td>
+                <td>@item.JOBS</td>
+                <td>@item.WORKS</td>
                 <td><a href="#" class="btn btn-warning">GÜNCELLE</a></td>
                 <td><a href="#" class="btn btn-danger">SİL</a></td>
                 <td class="text-center"><input type="checkbox" style="width:30px; height:30px; cursor:pointer;" /></td>
-
             </tr>
         }
     </tbody>
 </table>
+<a class="btn btn-primary">Yeni Deneyim Ekle</a>

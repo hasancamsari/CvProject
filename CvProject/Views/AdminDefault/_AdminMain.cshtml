@@ -1,24 +1,29 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html lang="en">
-@Html.Partial("HeaderP")
+@Html.Action("HeaderP", "AdminDefault")
 <body>
 
     <div class="wrapper">
         <!-- Sidebar -->
-        @Html.Partial("SidebarP")
+        @Html.Action("SidebarP", "AdminDefault")
         <!-- End Sidebar -->
 
-        @Html.Partial("NavbarP")
-                
+        @Html.Action("NavbarP", "AdminDefault")
+
         <div class="container">
             @RenderBody()
         </div>
 
-        @Html.Partial("FooterP")
+        @Html.Action("FooterP", "AdminDefault")
     </div>
     <!-- Custom template | don't include it in your project! -->
     <!-- End Custom template -->
     <!--   Core JS Files   -->
-    @Html.Partial("ScriptsP")
+    @RenderSection("Scripts", required: false)
+    @Html.Action("ScriptsP", "AdminDefault")
 </body>
 </html>

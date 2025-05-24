@@ -11,11 +11,16 @@ namespace CvProject.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLMAIN
     {
         public int MID { get; set; }
+        [Required(ErrorMessage = "Ýsim alaný boþ býrakýlamaz")]
+        
         public string NAME { get; set; }
+        [Required(ErrorMessage = "Açýklama alaný boþ býrakýlamaz")]
         public string DESCRIPTION { get; set; }
+        public Nullable<int> M_ACTIVE { get; set; }
     }
 }

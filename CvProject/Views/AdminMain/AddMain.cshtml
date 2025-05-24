@@ -1,0 +1,33 @@
+﻿@model CvProject.Models.Entity.TBLMAIN
+
+@{
+    ViewBag.Title = "Yeni Kayıt";
+    Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
+}
+
+@using (Html.BeginForm("AddMain", "AdminMain", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <div class="card shadow rounded">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Bilgileri Giriniz</h5>
+
+                <div class="mb-3">
+                    <label class="form-label">İsim Giriniz</label>
+                    @Html.TextBoxFor(m => m.NAME, new { @class = "form-control", placeholder = "İsim Giriniz" })
+                    @Html.ValidationMessageFor(m => m.NAME, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Açıklama Giriniz</label>
+                    @Html.TextBoxFor(m => m.DESCRIPTION, new { @class = "form-control", placeholder = "Açıklama Giriniz" })
+                    @Html.ValidationMessageFor(m => m.DESCRIPTION, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        </div>
+    </div>
+}

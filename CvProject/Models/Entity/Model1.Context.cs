@@ -10,6 +10,7 @@
 namespace CvProject.Models.Entity
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -32,5 +33,6 @@ namespace CvProject.Models.Entity
         public virtual DbSet<TBLMAIN> TBLMAIN { get; set; }
         public virtual DbSet<TBLPROJECTS> TBLPROJECTS { get; set; }
         public virtual DbSet<TBLSKILLS> TBLSKILLS { get; set; }
+        public virtual DbSet<TBLUSERS> TBLUSERS { get; set; }
     }
 }

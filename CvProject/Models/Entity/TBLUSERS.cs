@@ -12,18 +12,10 @@ namespace CvProject.Models.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLCONTACT
+    public partial class TBLUSERS
     {
-        public int SMID { get; set; }
-        public string PHONE { get; set; }
-        public string SMLGIT { get; set; }
-        public string LINKGIT { get; set; }
-        public string SMLLINKED { get; set; }
-        public string LINKIN { get; set; }
-        public string LMAIL { get; set; }
-        public Nullable<int> CITEMID { get; set; }
-        public Nullable<int> C_ACTIVE { get; set; }
-    
-        public virtual TBLITEM TBLITEM { get; set; }
+        public int ID { get; set; }
+        public string USERNAME { get; set; }
+        public string PASSWORD { get; set; }
     }
 }

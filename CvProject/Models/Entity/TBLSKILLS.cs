@@ -17,6 +17,7 @@ namespace CvProject.Models.Entity
         public int SID { get; set; }
         public string SKILLS { get; set; }
         public Nullable<int> SITEMID { get; set; }
+        public Nullable<int> S_ACTIVE { get; set; }
     
         public virtual TBLITEM TBLITEM { get; set; }
     }

@@ -11,12 +11,14 @@ namespace CvProject.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLABOUT
     {
         public int AID { get; set; }
         public string DESCRIPTION_AB { get; set; }
         public Nullable<int> AITEMID { get; set; }
+        public Nullable<int> A_ACTIVE { get; set; }
     
         public virtual TBLITEM TBLITEM { get; set; }
     }

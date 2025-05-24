@@ -1,18 +1,10 @@
-﻿@model CvProject.Models.AllData
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Default/_MainLayout.cshtml";
-}
-
-
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
-@Html.Partial("Header") @* head *@
+@Html.Partial("Header", "MainPage") @* head *@
 
 <body>
     <div id="tm-bg"></div>
@@ -20,17 +12,17 @@
         <div class="tm-main-content">
             <div class="container tm-site-header-container">
                 <div class="row">
-                    @Html.Partial("Home", Model.HomeData) @* home *@
+                    @Html.Partial("Home", "MainPage") @* home *@
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="content">
                             <div class="grid">
-                                @Html.Partial("About", Model.AboutData) @* about *@
+                                @Html.Partial("About", "MainPage") @* about *@
 
-                                @Html.Partial("Skills", Model.SkillsData) @* skills *@
+                                @Html.Partial("Skills", "MainPage") @* skills *@
 
-                                @Html.Partial("Works", Model.WorksData) @* works *@
+                                @Html.Partial("Works", "MainPage") @* works *@
 
-                                @Html.Partial("Contact", Model.ContactData) @* contact *@
+                                @Html.Partial("Contact", "MainPage") @* contact *@
                             </div>
                         </div>
                     </div>
