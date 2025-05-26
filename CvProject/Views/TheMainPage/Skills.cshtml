@@ -1,31 +1,43 @@
 ﻿@using CvProject.Models.Entity;
 @model List<TBLSKILLS>
 
+@{
+    var uniqueItems = Model.Select(x => x.TBLITEM.ITEM).Distinct().ToList();
+}
+
 <div class="grid__item" id="team-link">
     <div class="product">
         <div class="tm-nav-link">
-            @foreach (var itm in Model)
+
+            <i class="fas fa-users fa-3x tm-nav-icon"></i>
+            @foreach (var itm in uniqueItems)
             {
-                <i class="fas fa-users fa-3x tm-nav-icon"></i>
-                <span class="tm-nav-text">@itm.TBLITEM.ITEM</span>
-                <div class="product__bg"></div>
+                <span class="tm-nav-text">@itm</span>
             }
+            <div class="product__bg"></div>
+
         </div>
         <div class="product__description">
             <div class="p-sm-4 p-2">
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        @foreach (var itm in uniqueItems)
+                        {
+                            <h2 class="tm-page-title">@itm</h2>
+                        }
+                        <hr style="width:100%; height:1px; background-color:#ccc; border:none;" />
+                    </div>
+                </div>
                 @foreach (var des in Model)
                 {
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <h2 class="tm-page-title">@des.TBLITEM.ITEM</h2>
-                            <hr style="width:100%; height:1px; background-color:#ccc; border:none;" />
-                        </div>
-                    </div>
                     <div class="row tm-reverse-sm">
                         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+
                             <ul>
                                 <li>@des.SKILLS</li>
                             </ul>
+
                         </div>
                     </div>
                 }

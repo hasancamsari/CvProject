@@ -1,0 +1,40 @@
+﻿@model CvProject.Models.Entity.TBLPROJECTS
+
+@{
+    ViewBag.Title = "AddWorks";
+    Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm("AddWorks", "AdminWorks", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <div class="card shadow rounded">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Bilgileri Giriniz</h5>
+
+                <div class="mb-3">
+                    <label class="form-label">Deneyim Giriniz</label>
+                    @Html.TextBoxFor(m => m.JOBS, new { @class = "form-control", placeholder = "Deneyim Giriniz" })
+                    @Html.ValidationMessageFor(m => m.JOBS, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.PITEMID, new { @Value = 3 })
+                    @Html.HiddenFor(m => m.P_ACTIVE, new { @Value = 0 })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Proje Giriniz</label>
+                    @Html.TextBoxFor(m => m.WORKS, new { @class = "form-control", placeholder = "Proje Giriniz" })
+                    @Html.ValidationMessageFor(m => m.WORKS, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.PITEMID, new { @Value = 3 })
+                    @Html.HiddenFor(m => m.P_ACTIVE, new { @Value = 0 })
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        </div>
+    </div>
+}
+

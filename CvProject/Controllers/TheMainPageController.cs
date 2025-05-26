@@ -33,13 +33,13 @@ namespace CvProject.Controllers
 
         public ActionResult Skills()
         {
-            var values = db.TBLSKILLS.ToList();
+            var values = db.TBLSKILLS.Include(m => m.TBLITEM).Where(m => m.S_ACTIVE == 1).ToList();
             return PartialView(values);
         }
 
         public ActionResult Works()
         {
-            var values = db.TBLPROJECTS.ToList();
+            var values = db.TBLPROJECTS.Include(m => m.TBLITEM).Where(m => m.P_ACTIVE == 1).ToList();
             return PartialView(values);
         }
 

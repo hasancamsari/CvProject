@@ -1,0 +1,64 @@
+﻿@model CvProject.Models.Entity.TBLCONTACT
+
+@{
+    ViewBag.Title = "AddWorks";
+    Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
+}
+
+@using (Html.BeginForm("AddContact", "AdminContact", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <div class="card shadow rounded">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Bilgileri Giriniz</h5>
+
+                <div class="mb-3">
+                    <label class="form-label">Telefon Giriniz</label>
+                    @Html.TextBoxFor(m => m.PHONE, new { @class = "form-control", placeholder = "Telefon Giriniz" })
+                    @Html.ValidationMessageFor(m => m.PHONE, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.CITEMID, new { @Value = 4 })
+                    @Html.HiddenFor(m => m.C_ACTIVE, new { @Value = 0 })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Git İsmi Giriniz</label>
+                    @Html.TextBoxFor(m => m.SMLGIT, new { @class = "form-control", placeholder = "Git İsmi Giriniz" })
+                    @Html.ValidationMessageFor(m => m.SMLGIT, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.CITEMID, new { @Value = 4 })
+                    @Html.HiddenFor(m => m.C_ACTIVE, new { @Value = 0 })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Git Linki Giriniz</label>
+                    @Html.TextBoxFor(m => m.LINKGIT, new { @class = "form-control", placeholder = "Git Linki Giriniz" })
+                    @Html.ValidationMessageFor(m => m.LINKGIT, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.CITEMID, new { @Value = 4 })
+                    @Html.HiddenFor(m => m.C_ACTIVE, new { @Value = 0 })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">LinkedIn İsmi Giriniz</label>
+                    @Html.TextBoxFor(m => m.SMLLINKED, new { @class = "form-control", placeholder = "LinkedIn İsmi Giriniz" })
+                    @Html.ValidationMessageFor(m => m.SMLLINKED, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.CITEMID, new { @Value = 4 })
+                    @Html.HiddenFor(m => m.C_ACTIVE, new { @Value = 0 })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">LindekIn Linki Giriniz</label>
+                    @Html.TextBoxFor(m => m.LINKIN, new { @class = "form-control", placeholder = "LindekIn Linki Giriniz" })
+                    @Html.ValidationMessageFor(m => m.LINKIN, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.CITEMID, new { @Value = 4 })
+                    @Html.HiddenFor(m => m.C_ACTIVE, new { @Value = 0 })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mail Giriniz</label>
+                    @Html.TextBoxFor(m => m.LMAIL, new { @class = "form-control", placeholder = "Mail Giriniz" })
+                    @Html.ValidationMessageFor(m => m.PHONE, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.CITEMID, new { @Value = 4 })
+                    @Html.HiddenFor(m => m.C_ACTIVE, new { @Value = 0 })
+                </div>
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        </div>
+    </div>
+}
+

@@ -758,6 +758,11 @@
     <Content Include="Views\TheMainPage\Scripts.cshtml" />
     <Content Include="Views\AdminAbout\AddAbout.cshtml" />
     <Content Include="Views\AdminAbout\Take.cshtml" />
+    <Content Include="Views\AdminSkills\AddSkills.cshtml" />
+    <Content Include="Views\AdminSkills\Take.cshtml" />
+    <Content Include="Views\AdminWorks\AddWorks.cshtml" />
+    <Content Include="Views\AdminWorks\Take.cshtml" />
+    <Content Include="Views\AdminContact\AddContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

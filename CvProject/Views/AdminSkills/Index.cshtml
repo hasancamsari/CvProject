@@ -1,10 +1,13 @@
 ﻿@using CvProject.Models.Entity;
 @model List<TBLSKILLS>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
 }
+
 <h2>Yetenekler</h2>
+
 <table class="table table-bordered">
     <thead class="table-active">
         <tr>
@@ -20,12 +23,24 @@
         {
             <tr>
                 <td>@item.SKILLS</td>
-                <td><a href="#" class="btn btn-warning">GÜNCELLE</a></td>
-                <td><a href="#" class="btn btn-danger">SİL</a></td>
-                <td class="text-center"><input type="checkbox" style="width:30px; height:30px; cursor:pointer;" /></td>
+                <td><a href="@Url.Action("Take","AdminSkills", new {id = item.SID})" class="btn btn-warning">GÜNCELLE</a></td>
+                <td><a href="@Url.Action("DeleteSkills", "AdminSkills", new {id = item.SID})" class="btn btn-danger">SİL</a></td>
+                <td class="text-center">
+                    @using (Html.BeginForm("Active", "AdminSkills", FormMethod.Post, new { @id = "form_" + item.SID }))
+                    {
+                    @Html.Hidden("id", item.SID)
+                    <input type="checkbox"
+                           name="activeCheckbox"
+                           value="1"
+                           @(item.S_ACTIVE == 1 ? "checked" : "")
+                           style="width: 30px; height: 30px; cursor: pointer;"
+                           onchange="document.getElementById('form_@item.SID').submit();" />
+                    <input type="hidden" name="activeCheckbox" value="0" />
+                    }
+                </td>
             </tr>
         }
     </tbody>
 </table>
-<a class="btn btn-primary">Yeni Yetenek Ekle</a>
 
+<a class="btn btn-primary" href="@Url.Action("AddSkills", "AdminSkills")">Yeni Yetenek Ekle</a>
