@@ -45,13 +45,13 @@ namespace CvProject.Controllers
 
         public ActionResult Contact()
         {
-            var values = db.TBLCONTACT.ToList();
+            var values = db.TBLCONTACT.Include(m => m.TBLITEM).Where(m => m.C_ACTIVE == 1).ToList();
             return PartialView(values);
         }
 
         public ActionResult Footer()
         {
-            var values = db.TBLMAIN.FirstOrDefault();
+            var values = db.TBLMAIN.FirstOrDefault(m => m.M_ACTIVE == 1);
             return PartialView(values);
         }
 

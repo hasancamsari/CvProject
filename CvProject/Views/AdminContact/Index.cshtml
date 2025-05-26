@@ -5,7 +5,7 @@
     Layout = "~/Views/AdminDefault/_AdminMain.cshtml";
 }
 <h2>İletişim</h2>
-<div >
+<div style="overflow-x: auto;">
     <table class="table table-bordered">
         <thead class="table-active">
             <tr>
@@ -34,10 +34,20 @@
                         <a href="@item.LINKIN" target="_blank">@item.LINKIN</a>
                     </td>
                     <td>@item.LMAIL</td>
-                    <td><a href="#" class="btn btn-warning btn-sm">GÜNCELLE</a></td>
-                    <td><a href="#" class="btn btn-danger btn-sm">SİL</a></td>
+                    <td><a href="@Url.Action("Take","AdminContact", new {id = item.SMID})" class="btn btn-warning btn-sm">GÜNCELLE</a></td>
+                    <td><a href="@Url.Action("DeleteContact","AdminContact", new {id = item.SMID})" class="btn btn-danger btn-sm">SİL</a></td>
                     <td class="text-center">
-                        <input type="checkbox" style="width:20px; height:20px; cursor:pointer;" />
+                        @using (Html.BeginForm("Active", "AdminContact", FormMethod.Post, new { @id = "form_" + item.SMID }))
+                        {
+                            @Html.Hidden("id", item.SMID)
+                            <input type="checkbox"
+                                   name="activeCheckbox"
+                                   value="1"
+                                   @(item.C_ACTIVE == 1 ? "checked" : "")
+                                   style="width: 30px; height: 30px; cursor: pointer;"
+                                   onchange="document.getElementById('form_@item.SMID').submit();" />
+                            <input type="hidden" name="activeCheckbox" value="0" />
+                        }
                     </td>
                 </tr>
             }
